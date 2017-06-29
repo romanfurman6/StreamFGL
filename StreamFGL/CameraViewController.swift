@@ -128,7 +128,7 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
             textField.placeholder = "Type here your stream code."
         }
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { [weak self] alert in
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] alert in
             guard let text = alertController.textFields?.first?.text else { return }
             self?.streamCode = text
         }))
@@ -139,28 +139,4 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
 
 extension CameraViewController: LFLiveSessionDelegate {
 
-    func liveSession(_ session: LFLiveSession?, liveStateDidChange state: LFLiveState) {
-        switch state {
-        case .error:
-            print("===error===")
-        case .pending:
-            print("===pending===")
-        case .ready:
-            print("===ready===")
-        case.start:
-            print("===start===")
-        case.stop:
-            print("===stop===")
-        case .refresh:
-            print("===refresh===")
-        }
-    }
-
-    func liveSession(_ session: LFLiveSession?, debugInfo: LFLiveDebug?) {
-
-    }
-
-    func liveSession(_ session: LFLiveSession?, errorCode: LFLiveSocketErrorCode) {
-        print("error: \(errorCode)")
-    }
 }
