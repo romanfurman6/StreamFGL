@@ -1,3 +1,2 @@
 github "LaiFengiOS/LFLiveKit" "2.6"
 github "ReactiveX/RxSwift" "3.5.0"
-github "RxSwiftCommunity/RxDataSources" "1.0.4"
