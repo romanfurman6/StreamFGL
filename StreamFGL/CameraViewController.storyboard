@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jFT-ek-23g">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="2lB-VX-f1G">
+            <objects>
+                <viewController id="jFT-ek-23g" customClass="CameraViewController" customModule="StreamFGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gSr-pb-UTZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="VRc-8X-Hc6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eVg-lL-dTD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-mf-i2u">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW8-a9-d9r">
+                                <rect key="frame" x="16" y="599" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.28063397234285709" green="0.56789817487142857" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Gwx-4F-ef1"/>
+                                    <constraint firstAttribute="height" constant="60" id="QGs-PP-WME"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wj1-PU-3DL">
+                                <rect key="frame" x="289" y="30" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.2253325582" green="0.70933544640000001" blue="0.79807716610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="4rJ-jS-5E1"/>
+                                    <constraint firstAttribute="height" constant="30" id="Asu-SG-HZy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fi-Km-HDS">
+                                <rect key="frame" x="16" y="599" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.1176470588" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="G6D-En-uOR"/>
+                                    <constraint firstAttribute="height" constant="60" id="MHN-kW-Tec"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="mOE-e8-Jv2"/>
+                                    <constraint firstAttribute="width" constant="60" id="z3P-JM-cZM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="3fi-Km-HDS" secondAttribute="bottom" constant="8" id="5ql-JQ-P8u"/>
+                            <constraint firstItem="3f6-mf-i2u" firstAttribute="top" secondItem="eVg-lL-dTD" secondAttribute="top" id="BZf-CP-wEW"/>
+                            <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="zW8-a9-d9r" secondAttribute="bottom" constant="8" id="Bpk-lF-AVx"/>
+                            <constraint firstAttribute="trailing" secondItem="3f6-mf-i2u" secondAttribute="trailing" id="Bqt-Zh-Ntz"/>
+                            <constraint firstItem="Wj1-PU-3DL" firstAttribute="top" secondItem="gSr-pb-UTZ" secondAttribute="bottom" constant="10" id="Bvj-f7-YgL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wj1-PU-3DL" secondAttribute="trailing" id="dSi-CC-dgn"/>
+                            <constraint firstItem="3fi-Km-HDS" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leadingMargin" id="etk-LH-cbc"/>
+                            <constraint firstItem="zW8-a9-d9r" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leadingMargin" id="kDc-2L-83S"/>
+                            <constraint firstItem="3f6-mf-i2u" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leading" id="lY6-Yw-9jZ"/>
+                            <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="3f6-mf-i2u" secondAttribute="bottom" id="t9Q-Lo-GDk"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="containerView" destination="3f6-mf-i2u" id="CwA-kI-ACv"/>
+                        <outlet property="settingsButton" destination="Wj1-PU-3DL" id="4PE-z1-mnu"/>
+                        <outlet property="startButton" destination="zW8-a9-d9r" id="6ax-fF-4Pv"/>
+                        <outlet property="stopButton" destination="3fi-Km-HDS" id="HEZ-s3-HHe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mXc-kL-UoT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="383.19999999999999" y="180.35982008995504"/>
+        </scene>
+    </scenes>
+</document>
