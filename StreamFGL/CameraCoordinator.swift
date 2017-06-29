@@ -24,24 +24,8 @@ class CameraCoordinator: CoordinatorProtocol {
         let viewModel = CameraViewModel()
         viewController.viewModel = viewModel
 
-        viewModel.settingsButtonTaps
-            .asObservable()
-            .bind(onNext: showSettings)
-            .disposed(by: disposeBag)
-
         self.navigationController.pushViewController(viewController, animated: true)
     }
 
     func finish() {}
-
-    func showSettings() {
-        settingsCoordinator = SettingsCoordinator(navigationController: self.navigationController)
-        settingsCoordinator.start()
-        settingsCoordinator.finished
-            .subscribe(onNext: { [weak self] _ in
-                self?.settingsCoordinator.finish()
-                self?.settingsCoordinator = nil
-            })
-            .disposed(by: disposeBag)
-    }
 }

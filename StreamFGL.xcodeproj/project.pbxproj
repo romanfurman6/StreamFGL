@@ -31,9 +31,6 @@
 		5F5DE72A1F05447F001AFDA3 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C6E1F05101A0026653F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F5DE72B1F05447F001AFDA3 /* LFLiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C691F050FEA0026653F /* LFLiveKit.framework */; };
 		5F5DE72C1F05447F001AFDA3 /* LFLiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C691F050FEA0026653F /* LFLiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F5DE7321F05525B001AFDA3 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F5DE7311F05525B001AFDA3 /* SettingsViewController.storyboard */; };
-		5F5DE7341F055262001AFDA3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5DE7331F055262001AFDA3 /* SettingsViewController.swift */; };
-		5F5DE7361F05526B001AFDA3 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5DE7351F05526B001AFDA3 /* SettingsCoordinator.swift */; };
 		5F5DE73A1F05543D001AFDA3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5DE7391F05543D001AFDA3 /* Constant.swift */; };
 		5F5DE73C1F05584D001AFDA3 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5DE73B1F05584D001AFDA3 /* CameraViewModel.swift */; };
 		5FE77A5B1F05ABF9006027AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE77A5A1F05ABF9006027AF /* AppDelegate.swift */; };
@@ -75,9 +72,6 @@
 		5F1A0C731F0511940026653F /* CameraCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		5F1A0C751F05119E0026653F /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5F1A0C791F0515730026653F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		5F5DE7311F05525B001AFDA3 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
-		5F5DE7331F055262001AFDA3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		5F5DE7351F05526B001AFDA3 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		5F5DE7391F05543D001AFDA3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5F5DE73B1F05584D001AFDA3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		5FE77A5A1F05ABF9006027AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +133,6 @@
 		5F1A0C571F050D8D0026653F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5F5DE7301F054FA0001AFDA3 /* Settings */,
 				5F1A0C7B1F0515E90026653F /* Camera */,
 			);
 			name = Screens;
@@ -185,16 +178,6 @@
 				5FE77A5A1F05ABF9006027AF /* AppDelegate.swift */,
 			);
 			name = App;
-			sourceTree = "<group>";
-		};
-		5F5DE7301F054FA0001AFDA3 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				5F5DE7311F05525B001AFDA3 /* SettingsViewController.storyboard */,
-				5F5DE7331F055262001AFDA3 /* SettingsViewController.swift */,
-				5F5DE7351F05526B001AFDA3 /* SettingsCoordinator.swift */,
-			);
-			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +242,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F5DE7321F05525B001AFDA3 /* SettingsViewController.storyboard in Resources */,
 				5F1A0C621F050EDA0026653F /* CameraViewController.storyboard in Resources */,
 				5F1A0C4D1F0505F00026653F /* LaunchScreen.storyboard in Resources */,
 				5F1A0C4A1F0505F00026653F /* Assets.xcassets in Resources */,
@@ -275,8 +257,6 @@
 			files = (
 				5FE77A5B1F05ABF9006027AF /* AppDelegate.swift in Sources */,
 				5F1A0C761F05119E0026653F /* CoordinatorProtocol.swift in Sources */,
-				5F5DE7361F05526B001AFDA3 /* SettingsCoordinator.swift in Sources */,
-				5F5DE7341F055262001AFDA3 /* SettingsViewController.swift in Sources */,
 				5F1A0C661F050F240026653F /* NibInitializable.swift in Sources */,
 				5F1A0C741F0511940026653F /* CameraCoordinator.swift in Sources */,
 				5F5DE73A1F05543D001AFDA3 /* Constant.swift in Sources */,

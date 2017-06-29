@@ -16,11 +16,11 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     var viewModel: CameraViewModelProtocol!
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
 
     private let disposeBag = DisposeBag()
+    private var streamCode = ""
 
     lazy var session: LFLiveSession = {
         let audioConfiguration = LFLiveAudioConfiguration.default()
@@ -41,7 +41,11 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        session.running = trues
+        session.running = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showAlert()
     }
 
 
@@ -51,10 +55,6 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     }
 
     private func bindView() {
-
-        settingsButton.rx.tap
-            .bind(to: viewModel.settingsButtonTaps)
-            .disposed(by: disposeBag)
 
         startButton.rx.tap
             .bind(onNext: startButtonTaps)
@@ -67,8 +67,12 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     }
 
     private func startButtonTaps() {
+        if streamCode.isEmpty {
+            showAlert()
+            return
+        }
         let stream = LFLiveStreamInfo()
-        stream.url = Constant.shared.streamURL
+        stream.url = "\(Constant.shared.streamURL)/\(streamCode)"
         session.startLive(stream)
         startButton.isHidden = true
         stopButton.isHidden = false
@@ -78,6 +82,19 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
         session.stopLive()
         stopButton.isHidden = true
         startButton.isHidden = false
+    }
+
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Stream Code", message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Type here your stream code."
+        }
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { [weak self] alert in
+            guard let text = alertController.textFields?.first?.text else { return }
+            self?.streamCode = text
+        }))
+        self.present(alertController, animated: true, completion:nil)
     }
 
 }

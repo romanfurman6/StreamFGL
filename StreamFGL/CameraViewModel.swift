@@ -8,10 +8,6 @@
 
 import RxSwift
 
-protocol CameraViewModelProtocol {
-    var settingsButtonTaps: PublishSubject<Void> { get }
-}
+protocol CameraViewModelProtocol {}
 
-class CameraViewModel: CameraViewModelProtocol {
-    let settingsButtonTaps = PublishSubject<Void>()
-}
+class CameraViewModel: CameraViewModelProtocol {}
