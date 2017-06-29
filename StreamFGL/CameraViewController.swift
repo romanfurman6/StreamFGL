@@ -18,6 +18,8 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var cameraPosition: UIButton!
+    @IBOutlet weak var micActivation: UIButton!
 
     private let disposeBag = DisposeBag()
     private var streamCode = ""
@@ -35,6 +37,7 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         bindView()
     }
 
@@ -64,6 +67,20 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
             .bind(onNext: stopButtonTaps)
             .disposed(by: disposeBag)
 
+        micActivation.rx.tap
+            .bind(onNext: micActivationButtonTaps)
+            .disposed(by: disposeBag)
+
+        cameraPosition.rx.tap
+            .bind(onNext: cameraPositionButtonTaps)
+            .disposed(by: disposeBag)
+    }
+
+    private func setupView() {
+        startButton.layer.cornerRadius = 30
+        stopButton.layer.cornerRadius = 30
+        micActivation.layer.cornerRadius = 30
+        cameraPosition.layer.cornerRadius = 30
     }
 
     private func startButtonTaps() {
@@ -82,6 +99,27 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
         session.stopLive()
         stopButton.isHidden = true
         startButton.isHidden = false
+    }
+
+    private func micActivationButtonTaps() {
+        if session.muted {
+            session.muted = false
+            micActivation.setTitle("Mic On", for: .normal)
+        } else {
+            session.muted = true
+            micActivation.setTitle("Mic Off", for: .normal)
+        }
+    }
+
+    private func cameraPositionButtonTaps() {
+
+        if session.captureDevicePosition == .back {
+            session.captureDevicePosition = .front
+            cameraPosition.setTitle("Front", for: .normal)
+        } else {
+            session.captureDevicePosition = .back
+            cameraPosition.setTitle("Back", for: .normal)
+        }
     }
 
     private func showAlert() {

@@ -52,6 +52,34 @@
                                     <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-7H-Dvb">
+                                <rect key="frame" x="157" y="599" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.70980392160000005" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="I9z-TY-Nj5"/>
+                                    <constraint firstAttribute="height" constant="60" id="mFD-ik-VEx"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="rEM-i7-dhN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="zgc-z3-ll5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjQ-KR-Wam">
+                                <rect key="frame" x="299" y="599" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="6Xt-oR-uRe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="A4W-pt-5BT"/>
+                                    <constraint firstAttribute="height" constant="60" id="dQ5-4B-Vag"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="f4z-Co-vzU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Mic On">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -59,9 +87,13 @@
                             <constraint firstItem="3f6-mf-i2u" firstAttribute="top" secondItem="eVg-lL-dTD" secondAttribute="top" id="BZf-CP-wEW"/>
                             <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="zW8-a9-d9r" secondAttribute="bottom" constant="8" id="Bpk-lF-AVx"/>
                             <constraint firstAttribute="trailing" secondItem="3f6-mf-i2u" secondAttribute="trailing" id="Bqt-Zh-Ntz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KjQ-KR-Wam" secondAttribute="trailing" id="Kky-zf-hLW"/>
+                            <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="cPP-7H-Dvb" secondAttribute="bottom" constant="8" id="VZb-eL-qLz"/>
+                            <constraint firstItem="cPP-7H-Dvb" firstAttribute="centerX" secondItem="eVg-lL-dTD" secondAttribute="centerX" id="bjU-hV-2h1"/>
                             <constraint firstItem="3fi-Km-HDS" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leadingMargin" id="etk-LH-cbc"/>
                             <constraint firstItem="zW8-a9-d9r" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leadingMargin" id="kDc-2L-83S"/>
                             <constraint firstItem="3f6-mf-i2u" firstAttribute="leading" secondItem="eVg-lL-dTD" secondAttribute="leading" id="lY6-Yw-9jZ"/>
+                            <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="KjQ-KR-Wam" secondAttribute="bottom" constant="8" id="rQS-bU-IB6"/>
                             <constraint firstItem="VRc-8X-Hc6" firstAttribute="top" secondItem="3f6-mf-i2u" secondAttribute="bottom" id="t9Q-Lo-GDk"/>
                         </constraints>
                     </view>
@@ -69,7 +101,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="cameraPosition" destination="cPP-7H-Dvb" id="w2D-1o-TvG"/>
                         <outlet property="containerView" destination="3f6-mf-i2u" id="CwA-kI-ACv"/>
+                        <outlet property="micActivation" destination="KjQ-KR-Wam" id="Umz-ta-Hsx"/>
                         <outlet property="startButton" destination="zW8-a9-d9r" id="6ax-fF-4Pv"/>
                         <outlet property="stopButton" destination="3fi-Km-HDS" id="HEZ-s3-HHe"/>
                     </connections>
