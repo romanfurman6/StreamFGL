@@ -23,10 +23,11 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
 
     private let disposeBag = DisposeBag()
     private var streamCode = ""
+    private var quality: LFLiveVideoQuality = .high3
 
     lazy var session: LFLiveSession = {
         let audioConfiguration = LFLiveAudioConfiguration.default()
-        let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: .high3)
+        let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: self.quality)
 
         let session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)!
         session.delegate = self
