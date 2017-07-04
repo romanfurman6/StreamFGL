@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsTableViewCell" customModule="StreamFGL" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyE-CM-80y">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-pD-o7A">
+                            <rect key="frame" x="30" y="8" width="315" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="R7t-pD-o7A" secondAttribute="bottom" constant="8" id="5Ss-sE-Uab"/>
+                        <constraint firstItem="R7t-pD-o7A" firstAttribute="top" secondItem="gyE-CM-80y" secondAttribute="top" constant="8" id="9r4-tu-rpx"/>
+                        <constraint firstAttribute="trailing" secondItem="R7t-pD-o7A" secondAttribute="trailing" constant="30" id="JhR-DO-Eah"/>
+                        <constraint firstItem="R7t-pD-o7A" firstAttribute="leading" secondItem="gyE-CM-80y" secondAttribute="leading" constant="30" id="JuR-sd-5vm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gyE-CM-80y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SgM-gV-W1a"/>
+                <constraint firstItem="gyE-CM-80y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="g5D-bF-gbG"/>
+                <constraint firstAttribute="bottom" secondItem="gyE-CM-80y" secondAttribute="bottom" id="hfw-Qn-RqB"/>
+                <constraint firstAttribute="trailing" secondItem="gyE-CM-80y" secondAttribute="trailing" id="nvY-ui-2vV"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="settingName" destination="R7t-pD-o7A" id="gep-cT-TcA"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="60"/>
+        </view>
+    </objects>
+</document>

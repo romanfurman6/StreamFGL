@@ -20,21 +20,11 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var cameraPosition: UIButton!
     @IBOutlet weak var micActivation: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var recView: UIView!
 
     private let disposeBag = DisposeBag()
-    private var streamCode = ""
-    private var quality: LFLiveVideoQuality = .high3
-
-    lazy var session: LFLiveSession = {
-        let audioConfiguration = LFLiveAudioConfiguration.default()
-        let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: self.quality)
-
-        let session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)!
-        session.delegate = self
-        session.captureDevicePosition = .back
-        session.preView = self.containerView
-        return session
-    }()
+    private var isLive: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,99 +35,97 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        session.running = true
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showAlert()
-    }
-
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        session.running = false
+        self.recView.backgroundColor = UIColor.gray
     }
 
     private func bindView() {
 
-        startButton.rx.tap
-            .bind(onNext: startButtonTaps)
+        let startButtonTaps = startButton.rx.tap
+            .asObservable()
+            .shareReplayLatestWhileConnected()
+
+        startButtonTaps
+            .withLatestFrom(viewModel.streamService.streamCode.asObservable())
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.streamService.startLive()
+                self?.startButton.isHidden = true
+                self?.stopButton.isHidden = false
+                self?.isLive = true
+                self?.startLive()
+            })
+            .disposed(by: disposeBag)
+
+        startButtonTaps
+            .withLatestFrom(viewModel.streamService.streamCode.asObservable())
+            .filter { $0.isEmpty }
+            .map { _ in }
+            .subscribe(viewModel.settingsButtonTaps)
             .disposed(by: disposeBag)
 
         stopButton.rx.tap
-            .bind(onNext: stopButtonTaps)
+            .asObservable()
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.streamService.stopLive()
+                self?.startButton.isHidden = false
+                self?.stopButton.isHidden = true
+                self?.isLive = false
+            })
             .disposed(by: disposeBag)
 
         micActivation.rx.tap
-            .bind(onNext: micActivationButtonTaps)
+            .bind(onNext: { [weak self] _ in
+                guard
+                    let `self` = self,
+                    let muted = self.viewModel.streamService.liveSession?.muted
+                else { return }
+                self.micActivation.backgroundColor = muted ? Color.micOnColor : Color.micOffColor
+                let title = muted ? "Mic on" : "Mic off"
+                self.micActivation.setTitle(title, for: .normal)
+                self.viewModel.streamService.liveSession?.muted = muted ? false : true
+            })
             .disposed(by: disposeBag)
 
         cameraPosition.rx.tap
-            .bind(onNext: cameraPositionButtonTaps)
+            .bind(onNext: { [weak self] _ in
+                let devicePosition = self?.viewModel.streamService.liveSession?.captureDevicePosition
+                self?.viewModel.streamService.liveSession?.captureDevicePosition = (devicePosition == .back) ? .front : .back
+            })
+            .disposed(by: disposeBag)
+
+        settingsButton.rx.tap
+            .bind(to: viewModel.settingsButtonTaps)
             .disposed(by: disposeBag)
     }
 
     private func setupView() {
         startButton.layer.cornerRadius = 30
         stopButton.layer.cornerRadius = 30
-        micActivation.layer.cornerRadius = 30
-        cameraPosition.layer.cornerRadius = 30
+        micActivation.layer.cornerRadius = 5
+        cameraPosition.layer.cornerRadius = 5
+        settingsButton.layer.cornerRadius = 5
+        recView.layer.cornerRadius = 10
     }
 
-    private func startButtonTaps() {
-        if streamCode.isEmpty {
-            showAlert()
-            return
-        }
-        let stream = LFLiveStreamInfo()
-        stream.url = "\(Constant.shared.streamURL)/\(streamCode)"
-        session.startLive(stream)
-        startButton.isHidden = true
-        stopButton.isHidden = false
+    private func stopLive() {
+
     }
 
-    private func stopButtonTaps() {
-        session.stopLive()
-        stopButton.isHidden = true
-        startButton.isHidden = false
+    func startLive() {
+        let duration = 0.3
+        UIView.animate(withDuration: duration, delay: 0.3, animations: {
+            self.recView.backgroundColor = UIColor.gray
+        }, completion: { _ in
+            UIView.animate(withDuration: duration, delay: 0.3, animations: {
+                self.recView.backgroundColor = UIColor.red
+            }, completion: { _ in
+                if self.isLive {
+                    self.startLive()
+                } else {
+                    self.recView.backgroundColor = UIColor.gray
+                }
+            })
+        })
     }
-
-    private func micActivationButtonTaps() {
-        if session.muted {
-            session.muted = false
-            micActivation.setTitle("Mic On", for: .normal)
-        } else {
-            session.muted = true
-            micActivation.setTitle("Mic Off", for: .normal)
-        }
-    }
-
-    private func cameraPositionButtonTaps() {
-
-        if session.captureDevicePosition == .back {
-            session.captureDevicePosition = .front
-            cameraPosition.setTitle("Front", for: .normal)
-        } else {
-            session.captureDevicePosition = .back
-            cameraPosition.setTitle("Back", for: .normal)
-        }
-    }
-
-    private func showAlert() {
-        let alertController = UIAlertController(title: "Stream Code", message: "", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Type here your stream code."
-        }
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] alert in
-            guard let text = alertController.textFields?.first?.text else { return }
-            self?.streamCode = text
-        }))
-        self.present(alertController, animated: true, completion:nil)
-    }
-
-}
-
-extension CameraViewController: LFLiveSessionDelegate {
 
 }

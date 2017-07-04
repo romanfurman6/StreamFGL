@@ -21,6 +21,16 @@
 		5F1A0C741F0511940026653F /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1A0C731F0511940026653F /* CameraCoordinator.swift */; };
 		5F1A0C761F05119E0026653F /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1A0C751F05119E0026653F /* CoordinatorProtocol.swift */; };
 		5F1A0C7A1F0515730026653F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1A0C791F0515730026653F /* AppCoordinator.swift */; };
+		5F34C86D1F0A571900D5BAE0 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C86C1F0A571900D5BAE0 /* SettingsCoordinator.swift */; };
+		5F34C86F1F0A572300D5BAE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C86E1F0A572300D5BAE0 /* SettingsViewController.swift */; };
+		5F34C8711F0A572900D5BAE0 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F34C8701F0A572900D5BAE0 /* SettingsViewController.storyboard */; };
+		5F34C8731F0A587C00D5BAE0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8721F0A587C00D5BAE0 /* SettingsViewModel.swift */; };
+		5F34C8751F0A58E400D5BAE0 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F34C8741F0A58E400D5BAE0 /* SettingsTableViewCell.xib */; };
+		5F34C8771F0A58EB00D5BAE0 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8761F0A58EB00D5BAE0 /* SettingsTableViewCell.swift */; };
+		5F34C87A1F0A5AAB00D5BAE0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8791F0A5AAB00D5BAE0 /* Setting.swift */; };
+		5F34C8811F0A72EC00D5BAE0 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8781F0A596D00D5BAE0 /* Reusable.swift */; };
+		5F34C8821F0A72F100D5BAE0 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8801F0A639E00D5BAE0 /* UIViewController+Rx.swift */; };
+		5F34C8841F0A8F1100D5BAE0 /* StreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34C8831F0A8E9900D5BAE0 /* StreamService.swift */; };
 		5F5DE7231F05447F001AFDA3 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C6B1F05101A0026653F /* RxBlocking.framework */; };
 		5F5DE7241F05447F001AFDA3 /* RxBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C6B1F05101A0026653F /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F5DE7251F05447F001AFDA3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1A0C6C1F05101A0026653F /* RxCocoa.framework */; };
@@ -72,6 +82,16 @@
 		5F1A0C731F0511940026653F /* CameraCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		5F1A0C751F05119E0026653F /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5F1A0C791F0515730026653F /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		5F34C86C1F0A571900D5BAE0 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		5F34C86E1F0A572300D5BAE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5F34C8701F0A572900D5BAE0 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		5F34C8721F0A587C00D5BAE0 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		5F34C8741F0A58E400D5BAE0 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		5F34C8761F0A58EB00D5BAE0 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		5F34C8781F0A596D00D5BAE0 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		5F34C8791F0A5AAB00D5BAE0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		5F34C8801F0A639E00D5BAE0 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		5F34C8831F0A8E9900D5BAE0 /* StreamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamService.swift; sourceTree = "<group>"; };
 		5F5DE7391F05543D001AFDA3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5F5DE73B1F05584D001AFDA3 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		5FE77A5A1F05ABF9006027AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +139,9 @@
 		5F1A0C411F0505F00026653F /* StreamFGL */ = {
 			isa = PBXGroup;
 			children = (
+				5F34C87D1F0A5F6E00D5BAE0 /* Models */,
 				5F1A0C7C1F0515F80026653F /* App */,
+				5F34C8831F0A8E9900D5BAE0 /* StreamService.swift */,
 				5F1A0C631F050EE20026653F /* Helpers */,
 				5F1A0C571F050D8D0026653F /* Screens */,
 				5F1A0C491F0505F00026653F /* Assets.xcassets */,
@@ -133,6 +155,7 @@
 		5F1A0C571F050D8D0026653F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5F34C86B1F0A570A00D5BAE0 /* Settings */,
 				5F1A0C7B1F0515E90026653F /* Camera */,
 			);
 			name = Screens;
@@ -141,7 +164,9 @@
 		5F1A0C631F050EE20026653F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5F34C8801F0A639E00D5BAE0 /* UIViewController+Rx.swift */,
 				5F1A0C641F050F240026653F /* NibInitializable.swift */,
+				5F34C8781F0A596D00D5BAE0 /* Reusable.swift */,
 				5F1A0C651F050F240026653F /* StoryboardInitializable.swift */,
 				5F1A0C751F05119E0026653F /* CoordinatorProtocol.swift */,
 			);
@@ -178,6 +203,27 @@
 				5FE77A5A1F05ABF9006027AF /* AppDelegate.swift */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		5F34C86B1F0A570A00D5BAE0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5F34C86C1F0A571900D5BAE0 /* SettingsCoordinator.swift */,
+				5F34C86E1F0A572300D5BAE0 /* SettingsViewController.swift */,
+				5F34C8701F0A572900D5BAE0 /* SettingsViewController.storyboard */,
+				5F34C8721F0A587C00D5BAE0 /* SettingsViewModel.swift */,
+				5F34C8741F0A58E400D5BAE0 /* SettingsTableViewCell.xib */,
+				5F34C8761F0A58EB00D5BAE0 /* SettingsTableViewCell.swift */,
+				5F34C8791F0A5AAB00D5BAE0 /* Setting.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		5F34C87D1F0A5F6E00D5BAE0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +288,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F34C8711F0A572900D5BAE0 /* SettingsViewController.storyboard in Resources */,
 				5F1A0C621F050EDA0026653F /* CameraViewController.storyboard in Resources */,
 				5F1A0C4D1F0505F00026653F /* LaunchScreen.storyboard in Resources */,
+				5F34C8751F0A58E400D5BAE0 /* SettingsTableViewCell.xib in Resources */,
 				5F1A0C4A1F0505F00026653F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,15 +303,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F34C8811F0A72EC00D5BAE0 /* Reusable.swift in Sources */,
+				5F34C8841F0A8F1100D5BAE0 /* StreamService.swift in Sources */,
 				5FE77A5B1F05ABF9006027AF /* AppDelegate.swift in Sources */,
 				5F1A0C761F05119E0026653F /* CoordinatorProtocol.swift in Sources */,
+				5F34C8821F0A72F100D5BAE0 /* UIViewController+Rx.swift in Sources */,
+				5F34C86F1F0A572300D5BAE0 /* SettingsViewController.swift in Sources */,
 				5F1A0C661F050F240026653F /* NibInitializable.swift in Sources */,
+				5F34C87A1F0A5AAB00D5BAE0 /* Setting.swift in Sources */,
 				5F1A0C741F0511940026653F /* CameraCoordinator.swift in Sources */,
+				5F34C8771F0A58EB00D5BAE0 /* SettingsTableViewCell.swift in Sources */,
 				5F5DE73A1F05543D001AFDA3 /* Constant.swift in Sources */,
+				5F34C86D1F0A571900D5BAE0 /* SettingsCoordinator.swift in Sources */,
 				5F1A0C7A1F0515730026653F /* AppCoordinator.swift in Sources */,
 				5F5DE73C1F05584D001AFDA3 /* CameraViewModel.swift in Sources */,
 				5F1A0C671F050F240026653F /* StoryboardInitializable.swift in Sources */,
 				5F1A0C601F050ED40026653F /* CameraViewController.swift in Sources */,
+				5F34C8731F0A587C00D5BAE0 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

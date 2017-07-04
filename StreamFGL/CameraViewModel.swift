@@ -8,6 +8,18 @@
 
 import RxSwift
 
-protocol CameraViewModelProtocol {}
+protocol CameraViewModelProtocol {
+    var settingsButtonTaps: PublishSubject<Void> { get }
+    var streamService: StreamServiceProtocol { get }
+    var streamCode:  BehaviorSubject<String> { get }
+}
 
-class CameraViewModel: CameraViewModelProtocol {}
+class CameraViewModel: CameraViewModelProtocol {
+    let settingsButtonTaps = PublishSubject<Void>()
+    let streamService: StreamServiceProtocol
+    var streamCode = BehaviorSubject<String>(value: "")
+
+    init(streamService: StreamServiceProtocol) {
+        self.streamService = streamService
+    }
+}

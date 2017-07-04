@@ -16,11 +16,13 @@ class AppCoordinator: CoordinatorProtocol {
     private let window = UIWindow()
     private let navigationController: UINavigationController
     private let disposeBag = DisposeBag()
+    private let streamService: StreamServiceProtocol
 
     // MARK: - Child Coordinators
     private var cameraCoordinator: CoordinatorProtocol?
 
-    init() {
+    init(streamService: StreamServiceProtocol) {
+        self.streamService = streamService
         self.navigationController = UINavigationController()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
@@ -31,7 +33,7 @@ class AppCoordinator: CoordinatorProtocol {
     }
 
     private func showCamera() {
-        cameraCoordinator = CameraCoordinator(navigationController: navigationController)
+        cameraCoordinator = CameraCoordinator(navigationController: navigationController, streamService: streamService)
         cameraCoordinator?.start()
     }
 

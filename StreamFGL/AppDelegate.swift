@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func startAppCoordinator() {
-        appCoordinator = AppCoordinator()
+        let streamService = StreamService()
+        appCoordinator = AppCoordinator(streamService: streamService)
         appCoordinator?.start()
     }
 

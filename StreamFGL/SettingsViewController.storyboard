@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d42-fQ-gN7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="5oP-mJ-w5l">
+            <objects>
+                <viewController id="d42-fQ-gN7" customClass="SettingsViewController" customModule="StreamFGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tzx-Yv-laX"/>
+                        <viewControllerLayoutGuide type="bottom" id="K7w-PH-fpF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxX-pU-oqc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emG-vg-xCl">
+                                <rect key="frame" x="0.0" y="54" width="375" height="613"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dvf-5T-hCR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Settings" id="Svk-wL-S4E">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="O7Q-yh-Eu4"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="emG-vg-xCl" secondAttribute="trailing" id="ECL-qr-7dN"/>
+                            <constraint firstAttribute="trailing" secondItem="Dvf-5T-hCR" secondAttribute="trailing" id="PJb-np-I6L"/>
+                            <constraint firstItem="emG-vg-xCl" firstAttribute="leading" secondItem="pxX-pU-oqc" secondAttribute="leading" id="Vsw-Z0-mr7"/>
+                            <constraint firstItem="Dvf-5T-hCR" firstAttribute="top" secondItem="pxX-pU-oqc" secondAttribute="top" id="b6N-b0-NCj"/>
+                            <constraint firstItem="emG-vg-xCl" firstAttribute="top" secondItem="Dvf-5T-hCR" secondAttribute="bottom" constant="10" id="eib-6I-AU3"/>
+                            <constraint firstItem="K7w-PH-fpF" firstAttribute="top" secondItem="emG-vg-xCl" secondAttribute="bottom" id="p4u-JE-vW6"/>
+                            <constraint firstItem="Dvf-5T-hCR" firstAttribute="leading" secondItem="pxX-pU-oqc" secondAttribute="leading" id="wLJ-sV-rsF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="O7Q-yh-Eu4" id="HfD-Ew-COW"/>
+                        <outlet property="tableView" destination="emG-vg-xCl" id="2el-Hd-YoI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaK-D7-K2c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-167.19999999999999" y="145.27736131934034"/>
+        </scene>
+    </scenes>
+</document>
