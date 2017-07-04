@@ -11,6 +11,7 @@ import Foundation
 class Constant {
     static let shared = Constant()
     let streamURL = "rtmp://media2.focusgrouplive.com/live"
+    let fglURL = "http://focusgrouplive.com"
 }
 
 class Color {

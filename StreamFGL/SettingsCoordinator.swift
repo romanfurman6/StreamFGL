@@ -12,7 +12,6 @@ import LFLiveKit
 class SettingsCoordinator: CoordinatorProtocol {
 
     var finished: Observable<Void> { return finishedSubject.asObservable() }
-    var stream = PublishSubject<Stream>()
     private let finishedSubject = PublishSubject<Void>()
     private var navigationController: UINavigationController
     private var disposeBag = DisposeBag()

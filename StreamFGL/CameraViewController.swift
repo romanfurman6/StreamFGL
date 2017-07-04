@@ -22,23 +22,69 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
     @IBOutlet weak var micActivation: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var recView: UIView!
+    @IBOutlet weak var brightSlider: VerticalSlider!
+    @IBOutlet weak var preferenceView: UIView!
+    @IBOutlet weak var brightView: UIView!
 
     private let disposeBag = DisposeBag()
     private var isLive: Bool = false
+    private var isLoaded: Bool = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         bindView()
+        setupSlider()
+        setupPreferenceView()
+    }
+
+    private func setupPreferenceView() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        self.preferenceView.addGestureRecognizer(gesture)
+    }
+
+    func handleTap(sender: UITapGestureRecognizer) {
+        let showed = brightSlider.alpha == CGFloat(1.0)
+        let alpha: CGFloat = showed ? 0.0 : 1.0
+        UIView.animate(withDuration: 0.3, delay: 0, options: [], animations: {
+            self.brightSlider.alpha = alpha
+            self.micActivation.alpha = alpha
+            self.settingsButton.alpha = alpha
+            self.cameraPosition.alpha = alpha
+            self.brightView.alpha = alpha
+        }, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.recView.backgroundColor = UIColor.gray
+        if !isLoaded {
+            isLoaded = true
+            showMainAlert()
+        }
+    }
+
+    private func setupSlider() {
+        brightSlider.slider.addTarget(self, action: #selector(sliderChagned), for: .valueChanged)
+    }
+
+    @objc private func sliderChagned() {
+        viewModel.streamService.liveSession?.brightLevel = CGFloat(brightSlider.value)
     }
 
     private func bindView() {
+
+        viewModel.streamService.createdNewSession
+            .asObservable()
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.streamService.stopLive()
+                self?.startButton.isHidden = false
+                self?.stopButton.isHidden = true
+                self?.isLive = false
+            })
+            .disposed(by: disposeBag)
 
         let startButtonTaps = startButton.rx.tap
             .asObservable()
@@ -105,10 +151,7 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
         cameraPosition.layer.cornerRadius = 5
         settingsButton.layer.cornerRadius = 5
         recView.layer.cornerRadius = 10
-    }
-
-    private func stopLive() {
-
+        brightView.layer.cornerRadius = 5
     }
 
     func startLive() {
@@ -126,6 +169,20 @@ final class CameraViewController: UIViewController, StoryboardInitializable {
                 }
             })
         })
+    }
+
+    private func showMainAlert() {
+        let title = "Hey let's start"
+        let alertController = UIAlertController(title: title, message: "Please, write here your stream code.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Add code", style: .default, handler: { [weak self] _ in
+            self?.viewModel.settingsButtonTaps.onNext()
+        }))
+        alertController.addAction(UIAlertAction(title: "Get code", style: .default, handler: { _ in
+            guard let url = URL(string: Constant.shared.fglURL) else { return }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }))
+        self.present(alertController, animated: true, completion:nil)
     }
 
 }

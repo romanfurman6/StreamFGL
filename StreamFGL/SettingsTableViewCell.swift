@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import RxSwift
 
 final class SettingsTableViewCell: UITableViewCell, NibInitializable, ReusableCell {
 
     @IBOutlet weak var settingName: UILabel!
 
-    func configure(with setting: Setting) {
-        self.settingName.text = setting.description
+    func configure(with type: AlertType) {
+        self.settingName.text = type.rawValue
     }
     
 }

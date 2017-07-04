@@ -29,7 +29,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="R7t-pD-o7A" secondAttribute="bottom" constant="8" id="5Ss-sE-Uab"/>
                         <constraint firstItem="R7t-pD-o7A" firstAttribute="top" secondItem="gyE-CM-80y" secondAttribute="top" constant="8" id="9r4-tu-rpx"/>
-                        <constraint firstAttribute="trailing" secondItem="R7t-pD-o7A" secondAttribute="trailing" constant="30" id="JhR-DO-Eah"/>
+                        <constraint firstAttribute="trailing" secondItem="R7t-pD-o7A" secondAttribute="trailing" constant="30" id="FIb-gJ-aGm"/>
                         <constraint firstItem="R7t-pD-o7A" firstAttribute="leading" secondItem="gyE-CM-80y" secondAttribute="leading" constant="30" id="JuR-sd-5vm"/>
                     </constraints>
                 </view>

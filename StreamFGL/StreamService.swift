@@ -16,8 +16,10 @@ protocol StreamServiceProtocol {
     func startLive()
     func stopLive()
     var videoQuality: Variable<LFLiveVideoQuality> { get }
+    var audioQuality: Variable<LFLiveAudioQuality> { get }
     var streamCode: Variable<String> { get }
     var liveSession: LFLiveSession? { get }
+    var createdNewSession: PublishSubject<Void> { get }
 }
 
 final class StreamService: NSObject, StreamServiceProtocol {
@@ -25,17 +27,25 @@ final class StreamService: NSObject, StreamServiceProtocol {
     var liveSession: LFLiveSession?
     var streamCode = Variable<String>("")
     var videoQuality = Variable<LFLiveVideoQuality>(.high3)
+    var audioQuality = Variable<LFLiveAudioQuality>(.high)
+    var createdNewSession = PublishSubject<Void>()
+    private var disposeBag = DisposeBag()
 
     override init() {
         super.init()
+        Observable.of(videoQuality.asObservable().map { _ in}, audioQuality.asObservable().map { _ in })
+            .merge()
+            .bind(onNext: createdNewSession.onNext)
+            .disposed(by: disposeBag)
     }
 
     func startNewSession(on view: UIView) {
         liveSession = LFLiveSession(
-            audioConfiguration: LFLiveAudioConfiguration.defaultConfiguration(for: .default),
+            audioConfiguration: LFLiveAudioConfiguration.defaultConfiguration(for: audioQuality.value),
             videoConfiguration: LFLiveVideoConfiguration.defaultConfiguration(for: videoQuality.value)
         )
 
+        liveSession?.adaptiveBitrate = true
         liveSession?.preView = view
         liveSession?.delegate = self
         liveSession?.captureDevicePosition = .back

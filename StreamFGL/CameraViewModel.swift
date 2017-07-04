@@ -12,12 +12,14 @@ protocol CameraViewModelProtocol {
     var settingsButtonTaps: PublishSubject<Void> { get }
     var streamService: StreamServiceProtocol { get }
     var streamCode:  BehaviorSubject<String> { get }
+    var createdNewSession: PublishSubject<Void> { get }
 }
 
 class CameraViewModel: CameraViewModelProtocol {
     let settingsButtonTaps = PublishSubject<Void>()
     let streamService: StreamServiceProtocol
     var streamCode = BehaviorSubject<String>(value: "")
+    var createdNewSession = PublishSubject<Void>()
 
     init(streamService: StreamServiceProtocol) {
         self.streamService = streamService
